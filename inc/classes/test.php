@@ -33,6 +33,9 @@ class Test{
                 $circ = FALSE;
             }
         }
+        if (is_user_logged_in()) {
+            add_action('init', array($this,'save_option_init'));
+        }
     }
     public function _getUserRegID(){
         return $this->userTestRegID;
@@ -80,6 +83,7 @@ class Test{
             return array('alert'=>'alert-danger','msg'=>'Test Id Empty !!');
         if(empty($userRegID))
             return array('alert'=>'alert-danger','msg'=>'Registration Id Empty !!');
+        $this->userTestRegID = $userRegID;
         $questions = $wpdb->get_results( 
                         "
                         SELECT * FROM $this->tblQuestions WHERE `set` = $testID 
@@ -111,5 +115,26 @@ class Test{
             );
         }
         return $test_session;
+    }
+    function save_option_init(){
+        add_action( 'wp_ajax_nopriv_saveoption', array($this,'_save_option') );
+    }
+    function _save_option(){
+        global $wpdb;
+        if(empty($_POST['answer']) || empty($_POST['regID']) || empty($_POST['qid']))
+            return null;
+        $wpdb->insert( 
+                    $this->tblSession, 
+                    array( 
+                            'regID' => $_POST['regID'], 
+                            'question' => $_POST['qid'], 
+                            'answer' => $_POST['answer'],
+                    ), 
+                    array( 
+                            '%s', 
+                            '%d',
+                            '%s',
+                    ) 
+            );
     }
 }

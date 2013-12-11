@@ -61,8 +61,37 @@ $('document').ready(function(){
            infiniteLoop: false,
            adaptiveHeight: true,
            pager:false,
-           auto: false
+           auto: false,
+           onSlideNext: function($slideElement, oldIndex, newIndex){
+                            //alert($slideElement.html());
+                             saveOption($slideElement.prev());
+                         },
+            onSlidePrev: function($slideElement, oldIndex, newIndex){
+                             saveOption($slideElement.next());
+                         }
        });
+       function saveOption($slideElement){
+           var qid = $slideElement.find('.questionId').val();
+           var answer = $("input:radio[name=answer-"+qid+"]:checked").val();
+           var actReg = $("#activeRegID").val();
+           if(answer === undefined){
+                
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url: ajaxurl,
+                    data: { 
+                        'action': 'saveoption', //calls wp_ajax_nopriv_saveoption
+                        'answer': answer,
+                        'regID': actReg,
+                        'qid': qid },
+                    success: function(data){
+                        alert(data);
+                    }
+                });
+            }
+       }
 });
 })(jQuery)
 

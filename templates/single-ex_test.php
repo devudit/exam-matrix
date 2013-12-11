@@ -58,7 +58,8 @@ if(isset($_POST['_startTest'])){
                     <input type="submit" class="eme_btn" name="_startTest" value="Ready To Go !" />
                     </form>
                     <?php } else { ?>
-                    <form id="" method="post">
+                    <form id="activeForm" method="post">
+                        <input type="hidden" name="activeRegID" id="activeRegID" value="<?php echo $test->_getUserRegID(); ?>" />
                         <ul id="testQuestion">
                             <?php $data = $is_test_started['session'];
                                     if(!empty($data)){
@@ -66,14 +67,15 @@ if(isset($_POST['_startTest'])){
                                         //echo '<li><ul>';
                                         foreach($quest as $k=>$q){
                                             echo '<li><div class="question-item">';
+                                                echo '<input type="hidden" name="questionId" class="questionId" value="'.$k.'" />';
                                                 echo '<p class="quest">'.$q['question'].'</p>';
-                                                echo '<p><input type="radio" id="q'.$k.'-opt1" name="answer['.$k.']" value="opt1" />';
+                                                echo '<p><input type="radio" id="q'.$k.'-opt1" name="answer-'.$k.'" value="opt1" />';
                                                     echo '<label for="q'.$k.'-opt1">'.$q['opt1'].'</label></p>';
-                                                echo '<p><input type="radio" id="q'.$k.'-opt2" name="answer['.$k.']" value="opt2" />';
+                                                echo '<p><input type="radio" id="q'.$k.'-opt2" name="answer-'.$k.'" value="opt2" />';
                                                     echo '<label for="q'.$k.'-opt2">'.$q['opt2'].'</label></p>';
-                                                echo '<p><input type="radio" id="q'.$k.'-opt3" name="answer['.$k.']" value="opt3" />';
+                                                echo '<p><input type="radio" id="q'.$k.'-opt3" name="answer-'.$k.'" value="opt3" />';
                                                     echo '<label for="q'.$k.'-opt3">'.$q['opt3'].'</label></p>';
-                                                echo '<p><input type="radio" id="q'.$k.'-opt4" name="answer['.$k.']" value="opt4" />';
+                                                echo '<p><input type="radio" id="q'.$k.'-opt4" name="answer-'.$k.'" value="opt4" />';
                                                     echo '<label for="q'.$k.'-opt4">'.$q['opt4'].'</label></p>';
                                             echo '</div></li>';
                                         }
