@@ -31,6 +31,7 @@ class examMatrix {
         add_filter('the_content', array($this,'_startTest'),1);
         add_filter( 'template_include', array($this, '_includeTemplate'), 1 );
         add_action( 'widgets_init', array($this,'_register_user_widget' ),1);
+        add_action( 'widgets_init', array($this,'_register_user_login' ),1);
         add_action('wp_head',array($this,'_ajaxurl'));
         add_action( 'wp_ajax_register_action',array($this,'_handle_registration'));
         add_action( 'wp_ajax_nopriv_register_action',array($this,'_handle_registration'));
@@ -42,6 +43,7 @@ class examMatrix {
         require_once('inc/classes/db.php');
         require_once('inc/classes/test.php');
         require_once('inc/widget/user-widget.php');
+        require_once('inc/widget/user-login.php');
     }
     // content hook
     function _startTest($content){
@@ -248,6 +250,9 @@ class examMatrix {
     // register User Widget widget
     function _register_user_widget() {
         register_widget( 'User_Widget' );
+    }
+    function _register_user_login() {
+        register_widget( 'User_Login' );
     }
     // user registration function 
     function _handle_registration(){

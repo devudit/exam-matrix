@@ -6,6 +6,7 @@
 jQuery.noConflict();
 (function ($) {
 $('document').ready(function(){
+    // registration script
 	 $('#register-me').on('click',function(){
 		 var action = 'register_action';
 		 var username = $("#st-username").val();
@@ -33,6 +34,27 @@ $('document').ready(function(){
 			$("#error-message").html(res);
 		});
 	 });
+     // Login script
+        $('form#login').on('submit', function(e){
+           $('form#login p.status').show().text('Loging In....');
+           $.ajax({
+               type: 'POST',
+               dataType: 'json',
+               url: ajaxurl,
+               data: { 
+                   'action': 'ajaxlogin', //calls wp_ajax_nopriv_ajaxlogin
+                   'username': $('form#login #username').val(), 
+                   'password': $('form#login #password').val(), 
+                   'security': $('form#login #security').val() },
+               success: function(data){
+                   $('form#login p.status').text(data.message);
+                   if (data.loggedin == true){
+                       location.reload();
+                   }
+               }
+           });
+           e.preventDefault();
+       });
 });
 })(jQuery)
 
