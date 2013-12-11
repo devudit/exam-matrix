@@ -12,7 +12,7 @@ Author URI: http://udi.trawat.zxq
  *
  * @package Exam Matrix
  * @version 1.0
- * @author Emerico
+ * @author Udit Rawat
  */
 
 namespace ExamMatrix;
