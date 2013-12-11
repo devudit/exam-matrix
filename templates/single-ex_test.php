@@ -61,6 +61,7 @@ if(isset($_POST['_startTest'])){
                     <form id="" method="post">
                         <ul id="testQuestion">
                             <?php $data = $is_test_started['session'];
+                                    if(!empty($data)){
                                     foreach($data as $subset=>$quest){
                                         //echo '<li><ul>';
                                         foreach($quest as $k=>$q){
@@ -78,6 +79,9 @@ if(isset($_POST['_startTest'])){
                                         }
                                         //echo '</li></ul>';
                                     }
+                                } else {
+                                    echo '<p><strong>No Question Defined In This Set</strong></p>';
+                                }
                              } ?>
                         </ul>
                     </form>

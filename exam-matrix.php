@@ -21,8 +21,8 @@ class examMatrix {
 
     // Constructor
     function __construct() {
-        add_action( 'init', array($this, '_includeLib'), 0 );
         register_activation_hook( __FILE__, array($this,'_installDB') );
+        add_action( 'init', array($this, '_includeLib'), 0 );
         add_action( 'init', array($this, '_addCustomPost'), 0 );
         add_action('save_post', array($this, '_saveMetaBox'), 1, 2); // save the custom fields
         add_action( 'admin_enqueue_scripts', array($this,'_addAdminScripts'));
@@ -40,14 +40,14 @@ class examMatrix {
     // include library 
     function _includeLib(){
         require_once('lib/php-formhelper/php-form-helper.php');
-        require_once('inc/classes/installDb.php');
         require_once('inc/classes/db.php');
         require_once('inc/classes/test.php');
         require_once('inc/widget/user-widget.php');
         require_once('inc/widget/user-login.php');
     }
     function _installDB(){
-        $tables = new \ExamMatrix\installDb();
+        require_once('inc/classes/installDb.php');
+        $tables = new installDb();
     }
     // content hook
     function _startTest($content){
