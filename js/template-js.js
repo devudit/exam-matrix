@@ -55,6 +55,14 @@ $('document').ready(function(){
            });
            e.preventDefault();
        });
+       // question slider
+       $('#testQuestion').bxSlider({
+           mode: 'fade',
+           infiniteLoop: false,
+           adaptiveHeight: true,
+           pager:false,
+           auto: false
+       });
 });
 })(jQuery)
 

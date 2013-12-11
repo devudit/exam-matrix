@@ -80,13 +80,18 @@ class examMatrix {
     // template scripts
     function _addTemplateScripts($hook){
         global $post;
-        //if ( is_single() && get_post_type() == 'ex_test' ) {
+        if ( is_single() && get_post_type() == 'ex_test' ) {
             wp_enqueue_style(
-                'template-css',
-                plugins_url( '/css/template-css.css' , __FILE__ )
+                'bx-slider-css',
+                plugins_url( '/css/jquery.bxslider.css' , __FILE__ )
             );
-        //}
-            wp_enqueue_script( 'exam_engine_admin_script', plugin_dir_url( __FILE__ ) . '/js/template-js.js',array( 'jquery' ) );
+            wp_enqueue_script( 'bx-slider-js', plugin_dir_url( __FILE__ ) . '/js/jquery.bxslider.js',array( 'jquery' ) );
+        }
+        wp_enqueue_style(
+            'template-css',
+            plugins_url( '/css/template-css.css' , __FILE__ )
+        );
+        wp_enqueue_script( 'exam_engine_admin_script', plugin_dir_url( __FILE__ ) . '/js/template-js.js',array( 'jquery' ) );
     }
     // adding admin ajax
     function _ajaxurl(){

@@ -57,9 +57,26 @@ if(isset($_POST['_startTest'])){
                     <input type="hidden" name="userRegID" value="<?php echo $test->_getUserRegID(); ?>" />
                     <input type="submit" class="eme_btn" name="_startTest" value="Ready To Go !" />
                     </form>
-                    <?php } else { 
-                        print_r($is_test_started['session']);
-                     } ?>
+                    <?php } else { ?>
+                    <form id="" method="post">
+                        <ul id="testQuestion">
+                            <?php $data = $is_test_started['session'];
+                                    foreach($data as $subset=>$quest){
+                                        //echo '<li><ul>';
+                                        foreach($quest as $k=>$q){
+                                            echo '<li><div class="question-item">';
+                                                echo '<p class="quest">'.$q['question'].'</p>';
+                                                echo '<p><input type="radio" name="answer['.$k.']" value="opt1" />'.$q['opt1'].'</p>';
+                                                echo '<p><input type="radio" name="answer['.$k.']" value="opt2" />'.$q['opt2'].'</p>';
+                                                echo '<p><input type="radio" name="answer['.$k.']" value="opt3" />'.$q['opt3'].'</p>';
+                                                echo '<p><input type="radio" name="answer['.$k.']" value="opt4" />'.$q['opt4'].'</p>';
+                                            echo '</div></li>';
+                                        }
+                                        //echo '</li></ul>';
+                                    }
+                             } ?>
+                        </ul>
+                    </form>
                 </div>
                 <!-- End Work Room -->
             </div>

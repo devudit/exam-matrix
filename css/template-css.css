@@ -229,3 +229,23 @@
 .alert-success{
     color: green;
 }
+/* single page css*/
+.bx-viewport{
+    height:200px !important;
+}
+.question-item{ 
+}
+.question-item p{
+    display: block;
+    margin-bottom: 10px;
+}
+.question-item p.quest{
+    display: block;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #000;
+    font-weight:bold;
+}
+.bx-controls-direction{
+    text-align: center;
+}
