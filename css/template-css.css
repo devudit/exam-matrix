@@ -239,6 +239,9 @@
     display: block;
     margin-bottom: 10px;
 }
+.question-item p label{
+    cursor:pointer;
+}
 .question-item p.quest{
     display: block;
     margin-bottom: 15px;
