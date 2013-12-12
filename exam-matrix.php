@@ -42,6 +42,7 @@ class examMatrix {
         require_once('lib/php-formhelper/php-form-helper.php');
         require_once('inc/classes/db.php');
         require_once('inc/classes/test.php');
+        require_once('inc/classes/DigitalClock.php');
         require_once('inc/widget/user-widget.php');
         require_once('inc/widget/user-login.php');
     }

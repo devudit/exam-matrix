@@ -39,7 +39,12 @@ if(isset($_POST['_startTest'])){
         <?php get_sidebar(); ?>
         <div class="content">
             <div class="data">
-		<strong id="title"><h1><?php echo get_the_title(); ?></h1></strong>
+		<strong id="title"><h1><?php echo get_the_title(); 
+                        if($is_test_started['status']){
+                            $clock = new DigitalClock();
+                            $clock->_showClock('activeForm');
+                        }
+                ?></h1></strong>
                 <hr/>
                 <?php if($is_test_started['msg'] != ''){ ?>
                 <div class="alert <?php echo $is_test_started['alert']; ?>"><?php echo $is_test_started['msg']; ?></div>
