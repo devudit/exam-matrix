@@ -40,15 +40,15 @@ class examMatrix {
     // include library 
     function _includeLib(){
         require_once('lib/php-formhelper/php-form-helper.php');
-        require_once('inc/classes/db.php');
-        require_once('inc/classes/test.php');
+        require_once('inc/classes/Database.php');
+        require_once('inc/classes/Test.php');
         require_once('inc/classes/DigitalClock.php');
         require_once('inc/widget/user-widget.php');
         require_once('inc/widget/user-login.php');
     }
     function _installDB(){
-        require_once('inc/classes/installDb.php');
-        $tables = new installDb();
+        require_once('inc/classes/InstallDb.php');
+        $tables = new InstallDb();
     }
     // content hook
     function _startTest($content){
