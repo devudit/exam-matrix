@@ -9,7 +9,7 @@ Plugin is very simple having understandable code so every one can modify it to a
 
 Completely object oriented
 
-<h3> Help / Installetion </h3>
+<h3> Help / Installation </h3>
 
 1:- Install the plugin by uploading via wordpress<br/>
 2:- Create a Set , then create some subset for belonging set<br/>
