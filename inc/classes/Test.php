@@ -6,6 +6,7 @@
  * @version 1.0
  * @author Emerico
  */
+namespace ExamMatrix;
 class Test{
 
     private $testID;
@@ -32,9 +33,6 @@ class Test{
                 $this->userTestRegID = $tempID;
                 $circ = FALSE;
             }
-        }
-        if (is_user_logged_in()) {
-            add_action('init', array($this,'save_option_init'));
         }
     }
     public function _getUserRegID(){
@@ -78,7 +76,7 @@ class Test{
     }
     function _installTestQuestion($userRegID,$testID){
         global $wpdb;
-        $db = new ExamMatrix\Database();
+        $db = new Database();
         if(empty($testID))
             return array('alert'=>'alert-danger','msg'=>'Test Id Empty !!');
         if(empty($userRegID))
@@ -115,26 +113,5 @@ class Test{
             );
         }
         return $test_session;
-    }
-    function save_option_init(){
-        add_action( 'wp_ajax_nopriv_saveoption', array($this,'_save_option') );
-    }
-    function _save_option(){
-        global $wpdb;
-        if(empty($_POST['answer']) || empty($_POST['regID']) || empty($_POST['qid']))
-            return null;
-        $wpdb->insert( 
-                    $this->tblSession, 
-                    array( 
-                            'regID' => $_POST['regID'], 
-                            'question' => $_POST['qid'], 
-                            'answer' => $_POST['answer'],
-                    ), 
-                    array( 
-                            '%s', 
-                            '%d',
-                            '%s',
-                    ) 
-            );
     }
 }

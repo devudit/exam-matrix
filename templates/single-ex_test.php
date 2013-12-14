@@ -6,7 +6,7 @@
  */
 ?>
 <?php get_header(); ?>
-<?php if(!isset($_REQUEST['testId']) && $_REQUEST['testId'] == '') { ?>
+<?php if(!isset($_REQUEST['testId']) && $_REQUEST['testId'] == '' && !isset($_REQUEST['status'])) { ?>
 <div class="page">
     <div class="container">
         <?php get_sidebar(); ?>
@@ -26,13 +26,21 @@
         </div>
     </div>
 </div>
-<?php } else { 
+<?php } elseif(isset($_REQUEST['status'])){ ?>
+<div class="page">
+    <div class="container">
+        <?php get_sidebar(); ?>
+        <div class="content">
+            <div class="data">
+                <h3>Your Test Is Submitted Contact Administrator For Result</h3>
+            </div>
+        </div>
+    </div>
+</div>  
+<?php } else  { 
 $testID = trim($_REQUEST['testId']); 
-$test = new Test($testID);
 $is_test_started = FALSE;
-if(isset($_POST['_startTest'])){
-        $is_test_started = $test->_startTest(trim($_POST['userRegID']),$testID);
-}
+$is_test_started = $em->ETest(trim($testID));
 ?>
 <div class="page">
     <div class="container">
@@ -41,8 +49,7 @@ if(isset($_POST['_startTest'])){
             <div class="data">
 		<strong id="title"><h1><?php echo get_the_title(); 
                         if($is_test_started['status']){
-                            $clock = new DigitalClock();
-                            $clock->_showClock('activeForm');
+                            $em->DigiClock('activeForm');
                         }
                 ?></h1></strong>
                 <hr/>
@@ -52,19 +59,9 @@ if(isset($_POST['_startTest'])){
                 <br/><br/>
                 <!-- Work Room -->
                 <div id="workroom">
-                    <?php if(!$is_test_started['status']){ ?>
-                    <form method="post" action="">
-                    <p> 
-                        Your test registration id is 
-                        <?php echo $test->_getUserRegID(); ?> . 
-                        Please Remember this for future usage.<br/>
-                    </p>
-                    <input type="hidden" name="userRegID" value="<?php echo $test->_getUserRegID(); ?>" />
-                    <input type="submit" class="eme_btn" name="_startTest" value="Ready To Go !" />
-                    </form>
-                    <?php } else { ?>
-                    <form id="activeForm" method="post">
-                        <input type="hidden" name="activeRegID" id="activeRegID" value="<?php echo $test->_getUserRegID(); ?>" />
+                    <?php if($is_test_started['status']) { ?>
+                    <form id="activeForm" method="post" action="<?php echo get_permalink(get_the_Id()); ?>?status=submit">
+                        <input type="hidden" name="activeRegID" id="activeRegID" value="<?php echo $em->GetUserRegID(); ?>" />
                         <ul id="testQuestion">
                             <?php $data = $is_test_started['session'];
                                     if(!empty($data)){

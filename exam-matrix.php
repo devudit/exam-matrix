@@ -18,7 +18,7 @@ Author URI: http://udi.trawat.zxq
 namespace ExamMatrix;
 session_start();
 class examMatrix {
-
+    private $UserRegID;
     // Constructor
     function __construct() {
         register_activation_hook( __FILE__, array($this,'_installDB') );
@@ -346,6 +346,20 @@ class examMatrix {
         }
         return $avatar;
   }
+  // External
+  public function DigiClock($frmCls){
+      $clock = new DigitalClock();
+      $clock->_showClock($frmCls);
+  }
+  public function ETest($testID){
+      $test = new Test($testID);
+      $this->UserRegID = $test->_getUserRegID();
+      $data = $test->_startTest($this->UserRegID,$testID);
+      return $data;
+  }
+  public function GetUserRegID(){
+      return $this->UserRegID;
+  }
 }
-$oe = new examMatrix();
+$em = new examMatrix();
 ?>

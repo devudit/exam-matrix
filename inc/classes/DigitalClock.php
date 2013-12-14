@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-//namespace ExamMatrix;
+namespace ExamMatrix;
 
 /**
  * Description of DigitalClock
