@@ -1,4 +1,4 @@
-exam-matrix
+Exam Matrix
 ===========
 @author Udit Rawat
 
