@@ -100,7 +100,9 @@ class examMatrix {
     }
     // adding admin ajax
     function _ajaxurl(){
-        echo '<script> var ajaxurl = "'.admin_url('admin-ajax.php') .'"</script>';
+        echo '<script> var ajaxurl = "'.admin_url('admin-ajax.php') .'";
+        var pluginAjax = "'.plugin_dir_url( __FILE__ ).'/inc/classes/Ajax.php";
+        </script>';
     }
     // Custom Post Type
     function _addCustomPost(){

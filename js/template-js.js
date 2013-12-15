@@ -80,7 +80,7 @@ $('document').ready(function(){
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
-                    url: ajaxurl,
+                    url: pluginAjax,
                     data: { 
                         'action': 'saveoption', //calls wp_ajax_nopriv_saveoption
                         'answer': answer,
