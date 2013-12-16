@@ -33,6 +33,11 @@
         <div class="content">
             <div class="data">
                 <h3>Your Test Is Submitted Contact Administrator For Result</h3>
+                <!-- testing -->
+                <?php
+                    print_r($em->Result('REG-7956'));
+                ?>
+                <!-- end testing -->
             </div>
         </div>
     </div>

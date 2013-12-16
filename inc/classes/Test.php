@@ -48,6 +48,7 @@ class Test{
     public function _startTest($userRegID,$testId){
         global $wpdb, $current_user;
         $current_user = wp_get_current_user();
+        date_default_timezone_set('Indian/Christmas');
         if(empty($userRegID))
             return array('alert'=>'alert-danger','msg'=>'Registration id is invalid !!');
         if(empty($testId))

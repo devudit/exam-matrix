@@ -68,7 +68,7 @@ class DigitalClock {
     }
     private function _getTimeLimit(){
         global $wpdb,$post;
-        $timer = time() + get_post_meta($post->ID,'_eme_estimated_time',true);
+        $timer = time() + intval(get_post_meta($post->ID,'_eme_estimated_time',true)*60);
         return date('r', $timer);
     }
 }

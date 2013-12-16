@@ -42,6 +42,7 @@ class examMatrix {
         require_once('lib/php-formhelper/php-form-helper.php');
         require_once('inc/classes/Database.php');
         require_once('inc/classes/Test.php');
+        require_once('inc/classes/Result.php');
         require_once('inc/classes/DigitalClock.php');
         require_once('inc/widget/user-widget.php');
         require_once('inc/widget/user-login.php');
@@ -361,6 +362,10 @@ class examMatrix {
   }
   public function GetUserRegID(){
       return $this->UserRegID;
+  }
+  public function Result($REGID){
+      $result = new Result();
+      return $result->ShowResult($REGID);
   }
 }
 $em = new examMatrix();
