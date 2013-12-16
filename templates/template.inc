@@ -15,9 +15,13 @@
 <h3>Your Test Is Submitted Contact Administrator For Detailed Result !!</h3><br/><br/><br/>
 <?php
     $result = $em->Result($_REQUEST['activeRegID']);
-    echo '<p style="text-align:center"> Your test id is '.$result['regID'].'</p><br/>';
-    echo '<p style="text-align:center"><strong>You have got '.$result['gain'].' marks out of '.$result['total'].'</strong></p><br/>';
-    echo '<p style="text-align:center">Total number of wrong question are '.$result['wrong'].'</p>';
+    if(isset($result['error'])){
+        echo '<p>'.$result['error'].'</p>';
+    } else {
+        echo '<p style="text-align:center"> Your test id is '.$result['regID'].'</p><br/>';
+        echo '<p style="text-align:center"><strong>You have got '.$result['gain'].' marks out of '.$result['total'].'</strong></p><br/>';
+        echo '<p style="text-align:center">Total number of wrong question are '.$result['wrong'].'</p>';
+    }
 ?>
 <! -- Work Room Template -->
 <?php } else  {

@@ -58,10 +58,19 @@ class Result {
                     );
         return $seconds;
     }
+    private function CheckRegistrationId($REGID){
+        global $wpdb;
+        $ck = 0;
+        if(!empty($REGID))
+            $ck = $wpdb->get_var("SELECT userID FROM $this->tblResult WHERE regID='$REGID'");
+        return $ck;
+    }
     public function CalculateResult($REGID){
         global $wpdb, $table_prefix, $post;
         $correct = 0;
         $wrong = 0;
+        if($this->CheckRegistrationId($REGID))
+            return array('error'=>'Wrong Registration Id');
         if(self::ValidateResult($REGID)){
             $result = $wpdb->get_results(
                             "SELECT * 
