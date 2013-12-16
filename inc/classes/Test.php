@@ -76,7 +76,7 @@ class Test{
         return array('status' => TRUE, 'session' => $test_session );
     }
     function _installTestQuestion($userRegID,$testID){
-        global $wpdb;
+        global $wpdb,$post;
         $db = new Database();
         if(empty($testID))
             return array('alert'=>'alert-danger','msg'=>'Test Id Empty !!');
@@ -113,6 +113,24 @@ class Test{
                     ) 
             );
         }
-        return $test_session;
+        $rand = get_post_meta($post->ID,'_eme_show_random',true);
+        $r_session = array();
+        if($rand=='Y'){
+            foreach($test_session as $key=>$value){
+                $r_session[$key] = self::Shuffle($value);
+            }
+        } else {  
+            $r_session = $test_session;
+        }
+        return $r_session;
     }
+    private static function Shuffle($data) { 
+        if (!is_array($data)) return $data; 
+        $keys = array_keys($data); 
+        shuffle($keys); 
+        $random = array(); 
+        foreach ($keys as $key) 
+          $random[$key] = $data[$key]; 
+        return $random; 
+      } 
 }
