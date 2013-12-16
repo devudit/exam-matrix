@@ -32,10 +32,12 @@
         <?php get_sidebar(); ?>
         <div class="content">
             <div class="data">
-                <h3>Your Test Is Submitted Contact Administrator For Result</h3>
+                <h3>Your Test Is Submitted Contact Administrator For Detailed Result !!</h3><br/><br/><br/>
                 <!-- testing -->
                 <?php
-                    print_r($em->Result('REG-7956'));
+                    $result = $em->Result($_REQUEST['activeRegID']);
+                    echo '<p style="text-align:center"><strong>You have got '.$result['gain'].' marks out of '.$result['total'].'</strong></p><br/>';
+                    echo '<p style="text-align:center">Total number of wrong question are '.$result['wrong'].'</p>';
                 ?>
                 <!-- end testing -->
             </div>
