@@ -365,7 +365,7 @@ class examMatrix {
   }
   public function Result($REGID){
       $result = new Result();
-      return $result->ShowResult($REGID);
+      return $result->CalculateResult($REGID);
   }
 }
 $em = new examMatrix();

@@ -18,11 +18,13 @@ class Result {
     private $tblSession;
     private $tblMapping;
     private $tblQuestion;
+    private $tblResult;
     public function __construct(){
         global $table_prefix;
         $this->tblSession = $table_prefix.'ex_session';
         $this->tblMapping = $table_prefix.'ex_mapping';
         $this->tblQuestion = $table_prefix.'ex_questions';
+        $this->tblResult = $table_prefix.'ex_result';
     }
     public static function ValidateResult($REGID){
         global $wpdb, $table_prefix, $post;
@@ -56,9 +58,10 @@ class Result {
                     );
         return $seconds;
     }
-    public function ShowResult($REGID){
+    public function CalculateResult($REGID){
         global $wpdb, $table_prefix, $post;
         $correct = 0;
+        $wrong = 0;
         if(self::ValidateResult($REGID)){
             $result = $wpdb->get_results(
                             "SELECT * 
@@ -87,15 +90,35 @@ class Result {
                 }
             }
             $total = get_post_meta($post->ID,'_eme_total_marks',TRUE);
+            $total = empty($total)?0:$total;
             $perQ = get_post_meta($post->ID,'_eme_marks_per_question',TRUE);
+            $perQ = empty($perQ)?0:$perQ;
             $negative = get_post_meta($post->ID,'_eme_negative_marking',TRUE);
             if($negative == 'Y'){
-                $gain = $correct * $perQ;
+                $wrong = $numQ - $correct;
+                if($wrong)
+                    $gain = ($correct * $perQ) - ($wrong * $perQ);
                 
             } else{
                 $gain = $correct * $perQ;
             }
+            $wpdb->insert( 
+                    $this->tblResult, 
+                    array( 
+                            'userID' => $userID, 
+                            'regID' => $REGID,
+                            'total' => $total,
+                            'gain' => $gain,
+                            'wrong' => $wrong
+                    )
+            );
         }
-        return $num;
+        return array( 
+                    'userID' => $userID, 
+                    'regID' => $REGID,
+                    'total' => $total,
+                    'gain' => $gain,
+                    'wrong' => $wrong
+                    );
     }
 }

@@ -62,6 +62,10 @@ $('document').ready(function(){
            adaptiveHeight: true,
            pager:false,
            auto: false,
+           onSliderLoad: function(){
+                            $('.bx-prev').attr('id','exPrev');
+                            $('.bx-next').attr('id','exNext');
+                        },
            onSlideNext: function($slideElement, oldIndex, newIndex){
                             //alert($slideElement.html());
                              saveOption($slideElement.prev());
@@ -87,7 +91,7 @@ $('document').ready(function(){
                         'regID': actReg,
                         'qid': qid },
                     success: function(data){
-                        alert(data);
+                        //alert(data);
                     }
                 });
             }

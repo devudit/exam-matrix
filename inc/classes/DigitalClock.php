@@ -38,6 +38,8 @@ class DigitalClock {
               if (secs<10) secs = '0'+secs;
               document.getElementById('exTimer').innerHTML = hours+':'+mins+':'+secs;
               if(hours=='00' && mins == '00' && secs == '00'){
+                document.getElementById('exPrev').disabled=true
+                document.getElementById('exNext').disabled=true
                 document.getElementById(forForm).submit();
               }
               setTimeout("countdownto()",1000);
