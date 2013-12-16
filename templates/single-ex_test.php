@@ -90,7 +90,9 @@ $is_test_started = $em->ETest(trim($testID));
                                         }
                                         //echo '</li></ul>';
                                     }
-                                    echo '<li><div class="question-item"><h3>I am done !!</h3></div></li>';
+                                    echo '<li><div style="text-align:center;" class="question-item"><h3>I am done !!</h3><br/>';
+                                    echo '<a class="eme_btn" onclick="javascript:document.forms.activeForm.submit();">Submit</a>';
+                                    echo '</div></li>';
                                 } else {
                                     echo '<p><strong>No Question Defined In This Set</strong></p>';
                                 }
