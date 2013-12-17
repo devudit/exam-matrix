@@ -18,6 +18,7 @@ class Database {
     private $tblResults;
     private $tblMapping;
     private $tblPostmeta;
+    private $tblSession;
    function __construct(){
        global $table_prefix;
        $this->tblSet = $table_prefix.'ex_set';
@@ -26,6 +27,7 @@ class Database {
        $this->tblResults = $table_prefix.'ex_result';
        $this->tblMapping = $table_prefix.'ex_mapping';
        $this->tblPostmeta = $table_prefix.'postmeta';
+       $this->tblSession = $table_prefix.'ex_session';
    }
    public function validate($value,$type,$parent){
        global $wpdb;
@@ -239,6 +241,34 @@ class Database {
        $metavalue = $wpdb->get_var("SELECT testID FROM $this->tblMapping WHERE `regID`='$regid'");
        $postid = $wpdb->get_var("SELECT post_id FROM $this->tblPostmeta WHERE `meta_key`='_eme_selected_set' AND `meta_value`=$metavalue");
        return get_the_title($postid);
+   }
+   public function getTestDetail($regid){
+       global $wpdb;
+       if(empty($regid))
+           return 0;
+       $userid = $wpdb->get_var("SELECT userID FROM $this->tblMapping WHERE `regID`='$regid'");
+       $uData = get_userdata($userid);
+       $dt = $wpdb->get_var("SELECT date FROM $this->tblMapping WHERE `regID`='$regid'");
+       $detail = $wpdb->get_results( 
+                        "
+                        SELECT * 
+                        FROM  `$this->tblSession` 
+                        WHERE regID =  '$regid'
+                        "
+                );
+       $return = array();
+       foreach($detail as $k=>$v){
+           $row = $wpdb->get_row("SELECT * FROM $this->tblQuestions WHERE id = {$v->question}", ARRAY_A);
+           $return[$v->question] = array(
+                    'answer' => $v->answer,
+                    'question' => $row['question'],
+                    'correct_answer' => $row['answer']
+           );
+       }
+       return $test = array(
+                    'msg' =>$uData->first_name.' '.$uData->last_name.' has taken this test on date '.$dt,
+                    'quest' => $return
+            );
    }
 }
 

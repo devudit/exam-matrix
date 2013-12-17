@@ -24,6 +24,7 @@ if(isset($_REQUEST['submitSearch'])){
 }
 if(isset($_REQUEST['viewResult'])){
     $regID = trim($_REQUEST['viewResult']);
+    $detail = $db->getTestDetail($regID);
 }
 ?>
 <div class="qWrap">
@@ -87,6 +88,31 @@ if(isset($_REQUEST['viewResult'])){
                         <input type="hidden" name="viewResult" value="<?php echo $value->regID; ?>" />
                         <a class="close">></a>
                     </form>
+                </li>
+             <?php } ?> 
+        </ul>
+    </div>
+</div>
+<?php } ?>
+<?php if($detail){ ?>
+<div class="questions">
+    <div class="list-group">
+        <ul>
+            <li class="list-group-item active" style="font-size:16px;"><?php echo $detail['msg']; ?></li>
+                <li class="list-group-item item-set">
+                    <ul>
+                        <li style="width: 415px;"><strong>Question</strong></li>
+                        <li style="width: 60px;"><strong>Answer</strong></li>
+                        <li style="width: 100px;"><strong>Correct Answer</strong></li>
+                    </ul>
+                </li>
+            <?php foreach($detail['quest'] as $key => $value){ ?>
+                <li class="list-group-item item-set">
+                    <ul>
+                        <li style="width: 415px;"> <?php echo substr($value['question'],0,70); ?> </li>
+                        <li style="width: 60px;"> <?php echo $value['answer']; ?> </li>
+                        <li style="width: 100px;"> <?php echo $value['correct_answer']; ?> </li>
+                    </ul>
                 </li>
              <?php } ?> 
         </ul>
