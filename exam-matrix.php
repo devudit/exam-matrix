@@ -247,6 +247,7 @@ class examMatrix {
         add_menu_page('Q Set', 'Q Set', 'manage_options', 'ex_qset', array($this,'_addQuesSet'),plugins_url( 'images/exam.png' , __FILE__ ),7);
         add_submenu_page( 'ex_qset', 'Add Question', 'Add Question', 'manage_options', 'ex_add_ques', array($this,'_addQues'));
         add_submenu_page( 'ex_qset', 'Manage Question', 'Manage Question', 'manage_options', 'ex_manage_ques', array($this,'_manageQues'));
+        add_submenu_page( 'ex_qset', 'Search Results', 'Search Results', 'manage_options', 'ex_search_results', array($this,'_searchResults'));
     }
     function _addQuesSet(){
         $db = new Database();
@@ -259,6 +260,10 @@ class examMatrix {
     function _manageQues(){
         $db = new Database();
         require_once('inc/pages/manageq.php');
+    }
+    function _searchResults(){
+        $db = new Database();
+        require_once('inc/pages/search-results.php');
     }
     // register User Widget widget
     function _register_user_widget() {

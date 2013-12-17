@@ -5,7 +5,7 @@
 jQuery.noConflict();
 (function ($) {
     $(document).ready(function(){
-       $('.showSubset, .deleteSet, .deleteSubset,.deleteQuestion').click(function(){
+       $('.showSubset, .deleteSet, .deleteSubset,.deleteQuestion,.viewResult').click(function(){
            $(this).submit();
        });
        // add q

@@ -15,11 +15,17 @@ class Database {
     private $tblSet;
     private $tblSubset;
     private $tblQuestions;
+    private $tblResults;
+    private $tblMapping;
+    private $tblPostmeta;
    function __construct(){
        global $table_prefix;
        $this->tblSet = $table_prefix.'ex_set';
        $this->tblSubset = $table_prefix.'ex_subset';
        $this->tblQuestions = $table_prefix.'ex_questions';
+       $this->tblResults = $table_prefix.'ex_result';
+       $this->tblMapping = $table_prefix.'ex_mapping';
+       $this->tblPostmeta = $table_prefix.'postmeta';
    }
    public function validate($value,$type,$parent){
        global $wpdb;
@@ -204,6 +210,35 @@ class Database {
                         "
                 );
        return $questions;
+   }
+   public function getAllTestByUsername($username){
+       global $wpdb;
+       if(empty($username))
+           return array('alert'=>'alert-info','msg'=>'Username is empty !!');
+       $us = get_userdatabylogin($username);
+       $test = $wpdb->get_results( 
+                        " SELECT * FROM $this->tblResults WHERE `userID` = $us->ID LIMIT 0,20 "
+                );
+       
+       return $test;
+   }
+   public function getAllTestByRegID($regid){
+       global $wpdb;
+       if(empty($regid))
+           return array('alert'=>'alert-info','msg'=>'REG ID is empty !!');
+       $test = $wpdb->get_results( 
+                        " SELECT * FROM $this->tblResults WHERE `regID` = '$regid' LIMIT 0,20 "
+                );
+       
+       return $test;
+   }
+   public function getExamName($regid){
+       global $wpdb,$post;
+       if(empty($regid))
+           return array('alert'=>'alert-info','msg'=>'REG ID is empty !!');
+       $metavalue = $wpdb->get_var("SELECT testID FROM $this->tblMapping WHERE `regID`='$regid'");
+       $postid = $wpdb->get_var("SELECT post_id FROM $this->tblPostmeta WHERE `meta_key`='_eme_selected_set' AND `meta_value`=$metavalue");
+       return get_the_title($postid);
    }
 }
 
