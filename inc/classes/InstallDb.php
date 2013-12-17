@@ -59,7 +59,16 @@ class InstallDb {
                         `question` int(30) NOT NULL,
                         `answer` varchar(255) NOT NULL,
                         PRIMARY KEY (`id`)
-                      ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;'
+                      ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;',
+                'result' => 'CREATE TABLE IF NOT EXISTS `'.$table_prefix.'_ex_result` (
+                            `ID` int(30) NOT NULL AUTO_INCREMENT,
+                            `userID` int(30) NOT NULL,
+                            `regID` varchar(255) NOT NULL,
+                            `total` int(30) NOT NULL,
+                            `gain` int(30) NOT NULL,
+                            `wrong` int(30) NOT NULL,
+                            PRIMARY KEY (`ID`)
+                          ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;'
            );
        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
        foreach($sql as $key=>$query){
