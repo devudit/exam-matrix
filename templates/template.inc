@@ -71,6 +71,8 @@ $is_test_started = $em->ETest(trim($testID));
                 } else {
                     echo '<p><strong>No Question Defined In This Set</strong></p>';
                 }
+             } else {
+                 echo '<p><strong>No Question Defined In This Set</strong></p>';
              } ?>
         </ul>
     </form>

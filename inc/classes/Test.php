@@ -73,7 +73,11 @@ class Test{
                 ) 
         );
         $test_session = $this->_installTestQuestion($userRegID,$testId);
-        return array('status' => TRUE, 'session' => $test_session );
+        if($test_session){
+            return array('status' => TRUE, 'session' => $test_session );
+        } else{
+            return array('status' => FALSE );
+        }
     }
     function _installTestQuestion($userRegID,$testID){
         global $wpdb,$post;
@@ -88,6 +92,8 @@ class Test{
                         SELECT * FROM $this->tblQuestions WHERE `set` = $testID 
                         "
                 );
+        if(empty($questions))
+            return FALSE;
         foreach($questions as $k=>$v){
             $subset_name = $db->getSubsetName($v->subset);
             $test_session[$v->subset][$v->id] = array(
