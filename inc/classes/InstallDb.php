@@ -60,7 +60,7 @@ class InstallDb {
                         `answer` varchar(255) NOT NULL,
                         PRIMARY KEY (`id`)
                       ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;',
-                'result' => 'CREATE TABLE IF NOT EXISTS `'.$table_prefix.'_ex_result` (
+                'result' => 'CREATE TABLE IF NOT EXISTS `'.$table_prefix.'ex_result` (
                             `ID` int(30) NOT NULL AUTO_INCREMENT,
                             `userID` int(30) NOT NULL,
                             `regID` varchar(255) NOT NULL,
