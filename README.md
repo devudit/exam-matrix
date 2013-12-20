@@ -3,7 +3,7 @@ Exam Matrix
 @author Udit Rawat
 
 
-Wordpress plugin for creating quiz. will be completed soon.
+Wordpress plugin for creating quiz ( under development ). will be completed soon.
 
 Plugin is very simple having understandable code so every one can modify it to alter the process
 
