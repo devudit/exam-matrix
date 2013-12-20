@@ -41,16 +41,16 @@ class examMatrix {
     }
     // include library 
     function _includeLib(){
-        require_once('lib/php-formhelper/php-form-helper.php');
-        require_once('inc/classes/Database.php');
-        require_once('inc/classes/Test.php');
-        require_once('inc/classes/Result.php');
-        require_once('inc/classes/DigitalClock.php');
-        require_once('inc/widget/user-widget.php');
-        require_once('inc/widget/user-login.php');
+        require_once(plugin_dir_path( __FILE__ ).'lib/php-formhelper/php-form-helper.php');
+        require_once(plugin_dir_path( __FILE__ ).'inc/classes/Database.php');
+        require_once(plugin_dir_path( __FILE__ ).'inc/classes/Test.php');
+        require_once(plugin_dir_path( __FILE__ ).'inc/classes/Result.php');
+        require_once(plugin_dir_path( __FILE__ ).'inc/classes/DigitalClock.php');
+        require_once(plugin_dir_path( __FILE__ ).'inc/widget/user-widget.php');
+        require_once(plugin_dir_path( __FILE__ ).'inc/widget/user-login.php');
     }
     function _installDB(){
-        require_once('inc/classes/InstallDb.php');
+        require_once(plugin_dir_path( __FILE__ ).'inc/classes/InstallDb.php');
         $tables = new InstallDb();
     }
     // content hook
@@ -103,9 +103,7 @@ class examMatrix {
     }
     // adding admin ajax
     function _ajaxurl(){
-        echo '<script> var ajaxurl = "'.admin_url('admin-ajax.php') .'";
-        var pluginAjax = "'.plugin_dir_url( __FILE__ ).'/inc/classes/Ajax.php";
-        </script>';
+        echo '<script> var ajaxurl = "'.admin_url('admin-ajax.php') .'"</script>';
     }
     // Custom Post Type
     function _addCustomPost(){
@@ -253,19 +251,19 @@ class examMatrix {
     }
     function _addQuesSet(){
         $db = new Database();
-        require_once('inc/pages/qtest.php');
+        require_once(plugin_dir_path( __FILE__ ).'inc/pages/qtest.php');
     }
     function _addQues(){
         $db = new Database();
-        require_once('inc/pages/addq.php');
+        require_once(plugin_dir_path( __FILE__ ).'inc/pages/addq.php');
     }
     function _manageQues(){
         $db = new Database();
-        require_once('inc/pages/manageq.php');
+        require_once(plugin_dir_path( __FILE__ ).'inc/pages/manageq.php');
     }
     function _searchResults(){
         $db = new Database();
-        require_once('inc/pages/search-results.php');
+        require_once(plugin_dir_path( __FILE__ ).'inc/pages/search-results.php');
     }
     // register User Widget widget
     function _register_user_widget() {
