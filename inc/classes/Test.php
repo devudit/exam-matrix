@@ -138,5 +138,31 @@ class Test{
         foreach ($keys as $key) 
           $random[$key] = $data[$key]; 
         return $random; 
-      } 
+    }
+    public static function SaveOption($data){
+        global $wpdb, $table_prefix;
+        $tbl = $table_prefix.'ex_session';
+        if(empty($data['answer']) || empty($data['regID']) || empty($data['qid']))
+            die();
+        if(!self::TestStatus($data['regID'])){
+            $wpdb->update( 
+                    $tbl, 
+                    array( 
+                            'answer' => $data['answer']
+                    ), 
+                    array( 
+                            'regID' => $data['regID'],
+                            'question' => $data['qid'] 
+                    )
+            );
+        } else {
+            die();
+        }
+    }
+    private static function TestStatus($ref){
+        global $wpdb, $table_prefix;
+        $tbl = $table_prefix.'ex_mapping';
+        $chk = $wpdb->get_var("SELECT status FROM $tbl WHERE regID='$ref'");
+        return $chk;
+    }      
 }

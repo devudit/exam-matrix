@@ -36,6 +36,8 @@ class examMatrix {
         add_action('wp_head',array($this,'_ajaxurl'));
         add_action( 'wp_ajax_register_action',array($this,'_handle_registration'));
         add_action( 'wp_ajax_nopriv_register_action',array($this,'_handle_registration'));
+        add_action( 'wp_ajax_saveoption', array($this,'_saveOption') );
+        add_action( 'wp_ajax_nopriv_saveoption', array($this,'_saveOption') );
     }
     // include library 
     function _includeLib(){
@@ -353,6 +355,11 @@ class examMatrix {
           }
         }
         return $avatar;
+  }
+  public function _saveOption(){
+      if(isset($_POST['action']) && $_POST['action'] != ''){
+          Test::SaveOption($_POST);
+      }
   }
   // External
   public function DigiClock($frmCls){
