@@ -67,8 +67,7 @@ class Result {
     }
     public function CalculateResult($REGID){
         global $wpdb, $table_prefix, $post;
-        $correct = 0;
-        $wrong = 0;
+        $correct = $wrong = $na = $gain = 0;
         if($this->CheckRegistrationId($REGID))
             return array('error'=>'Wrong Registration Id');
         if(self::ValidateResult($REGID)){
@@ -90,12 +89,30 @@ class Result {
             $numQ = count($wpdb->get_results(
                             "SELECT *
                             FROM  $this->tblQuestion 
-                            WHERE `set` = 22"
+                            WHERE `set` = {$testID}"
                         ));
             foreach($result as $k=>$v){
+                $multi = $wpdb->get_var("SELECT multi FROM $this->tblQuestion WHERE `id`={$v->question} AND `set`={$testID}");
                 $x = $wpdb->get_var("SELECT answer FROM $this->tblQuestion WHERE `id`={$v->question} AND `set`={$testID}");
-                if(trim($x) == trim($v->answer)){
-                    $correct += 1;
+                if($this->isNa($v->answer)){
+                    $na += 1;
+                }
+                if($multi=='Y'){
+                    $ca = explode('-', $x);
+                    $pa = explode('-', $v->answer);
+                    $part = 1/count($ca);
+                    foreach($ca as $cak=>$cav){
+                        foreach($pa as $pak=>$pav){
+                            if($cav == $pav){
+                                $correct += $part;
+                            }
+                        }
+                    }
+                    
+                } else {
+                    if(trim($x) == trim($v->answer)){
+                        $correct += 1;
+                    }
                 }
             }
             $total = get_post_meta($post->ID,'_eme_total_marks',TRUE);
@@ -103,11 +120,9 @@ class Result {
             $perQ = get_post_meta($post->ID,'_eme_marks_per_question',TRUE);
             $perQ = empty($perQ)?0:$perQ;
             $negative = get_post_meta($post->ID,'_eme_negative_marking',TRUE);
+            $wrong = $numQ - $correct - $na;
             if($negative == 'Y'){
-                $wrong = $numQ - $correct;
-                if($wrong)
-                    $gain = ($correct * $perQ) - ($wrong * $perQ);
-                
+                $gain = ($correct * $perQ) - ($wrong * $perQ);
             } else{
                 $gain = $correct * $perQ;
             }
@@ -127,7 +142,18 @@ class Result {
                     'regID' => $REGID,
                     'total' => $total,
                     'gain' => $gain,
-                    'wrong' => $wrong
+                    'wrong' => $wrong,
+                    'na' => $na,
+                    'correct' => $correct
                     );
+    }
+    private function isNa($a){
+        if(is_array($a))
+            return false;
+        if($a=='na'){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

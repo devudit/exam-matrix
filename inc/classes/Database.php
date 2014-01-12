@@ -152,8 +152,15 @@ class Database {
            return array('alert'=>'alert-danger','msg'=>'Option three is empty !!');
        if($data['opt4']=='')
            return array('alert'=>'alert-danger','msg'=>'Option four is empty !!');
-       if($data['answer']=='')
+       if(count($data['answer'])==0)
            return array('alert'=>'alert-danger','msg'=>'Please select correct answer for this question !!');
+       $multi = 'N';
+       if(isset($data['multi']))
+           $multi = $data['multi'];
+       foreach($data['answer'] as $k=>$v){
+           $answer .= $v.'-';
+       }
+       $answer = rtrim($answer, "-");
        $wpdb->insert( 
                 $this->tblQuestions, 
                 array( 
@@ -164,11 +171,13 @@ class Database {
                         'opt2' => $data['opt2'],
                         'opt3' => $data['opt3'],
                         'opt4' => $data['opt4'],
-                        'answer' => $data['answer']
+                        'answer' => $answer,
+                        'multi' => $multi
                 ), 
                 array( 
                         '%d', 
                         '%d',
+                        '%s',
                         '%s',
                         '%s',
                         '%s',

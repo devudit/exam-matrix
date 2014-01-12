@@ -17,5 +17,20 @@ jQuery.noConflict();
             $('#submitSelectedSetId').submit();
            }
        });
+       // checkbox
+       $('.correctOption input').click(function(){
+           if(!$('#exMulti').is(':checked')){
+            if($(this).is(':checked')){
+                for(i=1;i<=4;i++){
+                    $('#answer'+i).attr('disabled','disabled');
+                }
+                $(this).removeAttr('disabled');
+            } else {
+                for(i=1;i<=4;i++){
+                    $('#answer'+i).removeAttr('disabled','disabled');
+                }
+            }
+           }
+       });
     });
 })(jQuery)

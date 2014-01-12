@@ -76,8 +76,15 @@ $('document').ready(function(){
        });
        function saveOption($slideElement){
            var qid = $slideElement.find('.questionId').val();
-           var answer = $("input:radio[name=answer-"+qid+"]:checked").val();
+           var type = $slideElement.find('.answerType').val();
            var actReg = $("#activeRegID").val();
+           if(type == 'multi'){
+               var answer = $('input[name=answer-'+qid+']:checked').map(function(){
+                    return $(this).val();
+                }).get();
+           } else if(type == 'single'){
+                var answer = $("input:radio[name=answer-"+qid+"]:checked").val();
+            }
            if(answer === undefined){
                 
             } else {

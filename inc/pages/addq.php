@@ -55,13 +55,14 @@ if(isset($_REQUEST['addQuestion'])){
              </p>
              <p><?php wp_editor('Add your question here', 'question'); ?></p>
              <br/>
+             <p><input type="checkbox" value="Y" name="multi" id="exMulti" />  Has Multiple Answers ?</p>
              <p><h3>Add Answers</h3></p>
              <!-- First -->
              <p>
                  <label for="opt1">Option One</label><br/>
                  <textarea name="opt1" style="margin: 1px; width: 480px; height: 50px;"></textarea>
                  <span class="correctOption">
-                     <input type="radio" value="opt1" name="answer" id="answer1" />
+                     <input type="checkbox" value="opt1" name="answer[]" id="answer1" />
                      <label for="answer1">Correct Option</label>
                  </span>
              </p>
@@ -70,7 +71,7 @@ if(isset($_REQUEST['addQuestion'])){
                  <label for="opt2">Option Two</label><br/>
                  <textarea name="opt2" style="margin: 1px; width: 480px; height: 50px;"></textarea>
                  <span class="correctOption">
-                     <input type="radio" value="opt2" name="answer" id="answer2" />
+                     <input type="checkbox" value="opt2" name="answer[]" id="answer2" />
                      <label for="answer2">Correct Option</label>
                  </span>
              </p>
@@ -79,7 +80,7 @@ if(isset($_REQUEST['addQuestion'])){
                  <label for="opt3">Option Three</label><br/>
                  <textarea name="opt3" style="margin: 1px; width: 480px; height: 50px;"></textarea>
                  <span class="correctOption">
-                     <input type="radio" value="opt3" name="answer" id="answer3" />
+                     <input type="checkbox" value="opt3" name="answer[]" id="answer3" />
                      <label for="answer3">Correct Option</label>
                  </span>
              </p>
@@ -88,7 +89,7 @@ if(isset($_REQUEST['addQuestion'])){
                  <label for="opt4">Option Four</label><br/>
                  <textarea name="opt4" style="margin: 1px; width: 480px; height: 50px;"></textarea>
                  <span class="correctOption">
-                     <input type="radio" value="opt4" name="answer" id="answer4" />
+                     <input type="checkbox" value="opt4" name="answer[]" id="answer4" />
                      <label for="answer4">Correct Option</label>
                  </span>
              </p>

@@ -20,7 +20,9 @@
     } else {
         echo '<p style="text-align:center"> Your test id is '.$result['regID'].'</p><br/>';
         echo '<p style="text-align:center"><strong>You have got '.$result['gain'].' marks out of '.$result['total'].'</strong></p><br/>';
-        echo '<p style="text-align:center">Total number of wrong question are '.$result['wrong'].'</p>';
+        echo '<p style="text-align:center">Correct '.$result['correct'].'</p>';
+        echo '<p style="text-align:center">Not Attempted '.$result['na'].'</p>';
+        echo '<p style="text-align:center">Wrong '.$result['wrong'].'</p>';
     }
 ?>
 <! -- Work Room Template -->
@@ -50,18 +52,35 @@ $is_test_started = $em->ETest(trim($testID));
                     foreach($data as $subset=>$quest){
                         //echo '<li><ul>';
                         foreach($quest as $k=>$q){
-                            echo '<li><div class="question-item">';
-                                echo '<input type="hidden" name="questionId" class="questionId" value="'.$k.'" />';
-                                echo '<p class="quest">'.$q['question'].'</p>';
-                                echo '<p><input type="radio" id="q'.$k.'-opt1" name="answer-'.$k.'" value="opt1" />';
-                                    echo '<label for="q'.$k.'-opt1">'.$q['opt1'].'</label></p>';
-                                echo '<p><input type="radio" id="q'.$k.'-opt2" name="answer-'.$k.'" value="opt2" />';
-                                    echo '<label for="q'.$k.'-opt2">'.$q['opt2'].'</label></p>';
-                                echo '<p><input type="radio" id="q'.$k.'-opt3" name="answer-'.$k.'" value="opt3" />';
-                                    echo '<label for="q'.$k.'-opt3">'.$q['opt3'].'</label></p>';
-                                echo '<p><input type="radio" id="q'.$k.'-opt4" name="answer-'.$k.'" value="opt4" />';
-                                    echo '<label for="q'.$k.'-opt4">'.$q['opt4'].'</label></p>';
-                            echo '</div></li>';
+                            if($q['multi'] == 'N'){
+                                echo '<li><div class="question-item">';
+                                    echo '<input type="hidden" name="questionId" class="questionId" value="'.$k.'" />';
+                                    echo '<input type="hidden" name="answerType" class="answerType" value="single" />';
+                                    echo '<p class="quest">'.$q['question'].'</p>';
+                                    echo '<p><input type="radio" id="q'.$k.'-opt1" name="answer-'.$k.'" value="opt1" />';
+                                        echo '<label for="q'.$k.'-opt1">'.$q['opt1'].'</label></p>';
+                                    echo '<p><input type="radio" id="q'.$k.'-opt2" name="answer-'.$k.'" value="opt2" />';
+                                        echo '<label for="q'.$k.'-opt2">'.$q['opt2'].'</label></p>';
+                                    echo '<p><input type="radio" id="q'.$k.'-opt3" name="answer-'.$k.'" value="opt3" />';
+                                        echo '<label for="q'.$k.'-opt3">'.$q['opt3'].'</label></p>';
+                                    echo '<p><input type="radio" id="q'.$k.'-opt4" name="answer-'.$k.'" value="opt4" />';
+                                        echo '<label for="q'.$k.'-opt4">'.$q['opt4'].'</label></p>';
+                                echo '</div></li>';
+                            } elseif($q['multi']=='Y'){
+                                echo '<li><div class="question-item">';
+                                    echo '<input type="hidden" name="questionId" class="questionId" value="'.$k.'" />';
+                                    echo '<input type="hidden" name="answerType" class="answerType" value="multi" />';
+                                    echo '<p class="quest">'.$q['question'].'</p>';
+                                    echo '<p><input type="checkbox" id="q'.$k.'-opt1" name="answer-'.$k.'" value="opt1" />';
+                                        echo '<label for="q'.$k.'-opt1">'.$q['opt1'].'</label></p>';
+                                    echo '<p><input type="checkbox" id="q'.$k.'-opt2" name="answer-'.$k.'" value="opt2" />';
+                                        echo '<label for="q'.$k.'-opt2">'.$q['opt2'].'</label></p>';
+                                    echo '<p><input type="checkbox" id="q'.$k.'-opt3" name="answer-'.$k.'" value="opt3" />';
+                                        echo '<label for="q'.$k.'-opt3">'.$q['opt3'].'</label></p>';
+                                    echo '<p><input type="checkbox" id="q'.$k.'-opt4" name="answer-'.$k.'" value="opt4" />';
+                                        echo '<label for="q'.$k.'-opt4">'.$q['opt4'].'</label></p>';
+                                echo '</div></li>';
+                            }
                         }
                         //echo '</li></ul>';
                     }

@@ -104,6 +104,7 @@ class Test{
                         'opt2' => $v->opt2,
                         'opt3' => $v->opt3,
                         'opt4' => $v->opt4,
+                        'multi' => $v->multi,
             );
             $wpdb->insert( 
                     $this->tblSession, 
@@ -144,11 +145,20 @@ class Test{
         $tbl = $table_prefix.'ex_session';
         if(empty($data['answer']) || empty($data['regID']) || empty($data['qid']))
             die();
+        if(is_array($data['answer'])){
+            foreach($data['answer'] as $k=>$v){
+                $answer .= $v."-";
+            }
+            $answer = rtrim($answer,"-");
+        } else{
+            $answer = $data['answer'];
+        }
+            
         if(!self::TestStatus($data['regID'])){
             $wpdb->update( 
                     $tbl, 
                     array( 
-                            'answer' => $data['answer']
+                            'answer' => $answer
                     ), 
                     array( 
                             'regID' => $data['regID'],
