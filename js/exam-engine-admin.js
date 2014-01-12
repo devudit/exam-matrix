@@ -18,6 +18,10 @@ jQuery.noConflict();
            }
        });
        // checkbox
+       $('#exMulti').click(function(){
+           $('.correctOption input').removeAttr('checked');
+           $('.correctOption input').removeAttr('disabled');
+       });
        $('.correctOption input').click(function(){
            if(!$('#exMulti').is(':checked')){
             if($(this).is(':checked')){
