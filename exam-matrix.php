@@ -4,14 +4,14 @@ Plugin Name: Exam Matrix
 Plugin URI: Not Available
 Description: Emerico Web Solution
 Author: Udit Rawat
-Version: 1.4.3
+Version: 1.5
 Author URI: http://udi.trawat.zxq
 */
 /**
 * Description of exam-matrix
  *
  * @package Exam Matrix
- * @version 1.4.3
+ * @version 1.5
  * @author Udit Rawat
  */
 
