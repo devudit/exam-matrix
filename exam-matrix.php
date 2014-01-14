@@ -187,7 +187,7 @@ class examMatrix {
     }
     // Metabox Operation
     function _addMetaBox(){
-        add_meta_box('ex_test_question', 'Test Questions', array($this, '_testSettings'), 'ex_test', 'normal', 'high');        
+        add_meta_box('ex_test_question', 'Test Settings', array($this, '_testSettings'), 'ex_test', 'normal', 'high');        
     }
     function _testSettings(){
         global $post;
