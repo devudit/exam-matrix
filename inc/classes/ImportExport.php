@@ -13,5 +13,11 @@
  */
 namespace ExamMatrix;
 class ImportExport {
-    //put your code here
+    private $filename = null;
+    function __construct($filename){
+        $this->filename = $filename;
+    }
+    function Import(){
+        global $wpdb, $table_prefix;
+    }
 }

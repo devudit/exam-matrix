@@ -284,3 +284,12 @@ li.list-group-item:active, li.list-group-item:hover {
 .close:hover, .close:focus{
     background: #0044cc;
 }
+/* import export page */
+#exImportBox.postbox .hndle,#exExportBox.postbox .hndle{
+    cursor: pointer;
+    font-weight: normal;
+    padding: 5px;
+}
+#exImportBox.postbox .hndle span,#exExportBox.postbox .hndle span{
+    padding-left: 10px;
+}
