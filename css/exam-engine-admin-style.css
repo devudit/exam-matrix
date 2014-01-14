@@ -21,33 +21,27 @@ label.control-label{
     color: #428bca;
 }
 .ex-set{
-    width:300px;
+   width: 520px;
     float: left;
-    margin-right: 20px; 
+    margin-right: 20px;
 }
-.ex-set .panel{
+.ex-set #exSetBox{
     height:160px;
 }
 .ex-subset{
-    width:320px;
+    width: 520px;
     float: left;
-    margin-right: 20px; 
+    margin-right: 20px;
 }
 .addedsets{
     float:left;
-    width: 642px;
+    width: 1060px;
 }
 .ex-add-quest{
     width:660px;
 }
 #question{
     height: 190px;
-}
-.questions, .ex-question{
-    width:662px;
-}
-.ex-question .panel-body{
-    overflow:hidden;
 }
 .filter{
     margin-top: 10px;
@@ -62,109 +56,6 @@ label.control-label{
 .list-group ul li ul li{
     display: inline-block;
     margin-right: 15px;
-}
-/* panel */
-.panel {
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    border: 1px solid #428bca;
-    border-radius: 4px;
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-}
-.panel-primary>.panel-heading {
-    background-image: -webkit-gradient(linear,left 0,left 100%,from(#428bca),to(#357ebd));
-    background-image: -webkit-linear-gradient(top,#428bca,0%,#357ebd,100%);
-    background-image: -moz-linear-gradient(top,#428bca 0,#357ebd 100%);
-    background-image: linear-gradient(to bottom,#428bca 0,#357ebd 100%);
-    background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca',endColorstr='#ff357ebd',GradientType=0);
-    color: #ffffff;
-    background-color: #428bca;
-    border-color: #428bca;
-    padding: 10px 15px;
-    border-bottom: 1px solid transparent;
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
-}
-.panel-title {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 16px;
-}
-.panel-body {
-    padding: 15px;
-}
-/* end panel */
-/* button */
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
-    color: #ffffff;
-    background-color: #3276b1;
-    border-color: #285e8e;
-}
-.btn:hover, .btn:focus {
-    color: #333333;
-    text-decoration: none;
-}
-.btn-primary {
-    background-image: -webkit-gradient(linear,left 0,left 100%,from(#428bca),to(#3071a9));
-    background-image: -webkit-linear-gradient(top,#428bca,0%,#3071a9,100%);
-    background-image: -moz-linear-gradient(top,#428bca 0,#3071a9 100%);
-    background-image: linear-gradient(to bottom,#428bca 0,#3071a9 100%);
-    background-repeat: repeat-x;
-    border-color: #2d6ca2;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca',endColorstr='#ff3071a9',GradientType=0);
-}
-.btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger {
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
-    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.15),0 1px 1px rgba(0,0,0,0.075);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.15),0 1px 1px rgba(0,0,0,0.075);
-}
-.btn-sm, .btn-xs {
-    padding: 5px 10px;
-    font-size: 12px;
-    line-height: 1.5;
-    border-radius: 3px;
-}
-.btn-primary {
-    color: #ffffff;
-    background-color: #428bca;
-    border-color: #357ebd;
-}
-.btn {
-    display: inline-block;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1.428571429;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-}
-.btn-danger {
-    background-image: -webkit-gradient(linear,left 0,left 100%,from(#d9534f),to(#c9302c));
-    background-image: -webkit-linear-gradient(top,#d9534f,0%,#c9302c,100%);
-    background-image: -moz-linear-gradient(top,#d9534f 0,#c9302c 100%);
-    background-image: linear-gradient(to bottom,#d9534f 0,#c9302c 100%);
-    background-repeat: repeat-x;
-    border-color: #c12e2a;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd9534f',endColorstr='#ffc9302c',GradientType=0);
-}
-.btn-danger {
-    color: #ffffff;
-    background-color: #d9534f;
-    border-color: #d43f3a;
 }
 /* alerts */
 .alert {
@@ -194,24 +85,9 @@ label.control-label{
     margin-bottom: 20px;
 }
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
-    text-shadow: 0 -1px 0 #3071a9;
-    background-image: -webkit-gradient(linear,left 0,left 100%,from(#428bca),to(#3278b3));
-    background-image: -webkit-linear-gradient(top,#428bca,0%,#3278b3,100%);
-    background-image: -moz-linear-gradient(top,#428bca 0,#3278b3 100%);
-    background-image: linear-gradient(to bottom,#428bca 0,#3278b3 100%);
-    background-repeat: repeat-x;
-    border-color: #3278b3;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca',endColorstr='#ff3278b3',GradientType=0);
-}
-.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
-    z-index: 2;
-    color: #ffffff;
-    background-color: #428bca;
-    border-color: #428bca;
-}
-.list-group-item:first-child {
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
+    border-bottom: 1px solid #eee;
+    background-color: #fff !important;
+    color: #000 !important;
 }
 li.list-group-item {
     color: #555555;
@@ -244,10 +120,10 @@ li.list-group-item:active, li.list-group-item:hover {
 .close{
     display: inline-block;
     float: right;
-    background: #428bca;
-    color: #fff;
+    background: #dddddd;
+    color: #fff !important;
     font-weight: bold;
-    padding: 1px 5px;
+    padding: 0px 5px;
     border-radius: 35px;
     -moz-border-radius: 35px;
     -webkit-border-radius: 35px;
@@ -256,16 +132,31 @@ li.list-group-item:active, li.list-group-item:hover {
     margin-top:-18px;
 }
 .close:hover, .close:focus{
-    background: #0044cc;
+    background: #888888;
 }
 /* import export page */
-#exImportBox.postbox .hndle,#exExportBox.postbox .hndle{
+#exImportBox.postbox .hndle,
+#exExportBox.postbox .hndle,
+#exAddQBox.postbox .hndle,
+#exSetBox.postbox .hndle,
+#exSubsetBox.postbox .hndle,
+#exManageBox.postbox .hndle,
+#exSearchBox.postbox .hndle{
     cursor: pointer;
     font-weight: normal;
     padding: 5px;
 }
-#exImportBox.postbox .hndle span,#exExportBox.postbox .hndle span{
+#exImportBox.postbox .hndle span,
+#exExportBox.postbox .hndle span,
+#exAddQBox.postbox .hndle span,
+#exSetBox.postbox .hndle span,
+#exSubsetBox.postbox .hndle span,
+#exManageBox.postbox .hndle span,
+#exSearchBox.postbox .hndle span{
     padding-left: 10px;
+}
+#exSearchBox .inside,#exManageBox .inside{
+    overflow:hidden;
 }
 #exCsvToImport{
     border: 1px solid #dddddd;

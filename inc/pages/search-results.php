@@ -28,7 +28,7 @@ if(isset($_REQUEST['viewResult'])){
 }
 ?>
 <div class="qWrap">
-<br/><p><h1> Search Result </h1></p><hr/><br/><br/>
+<br/><h2> Search Result </h2><hr/><br/>
 <?php if($alert['msg'] != ''){ ?>
 <div class="alert <?php echo $alert['alert']; ?>">
     <p><strong><?php echo $alert['msg']; ?></strong></p>
@@ -36,26 +36,26 @@ if(isset($_REQUEST['viewResult'])){
 <?php } ?>
 <!-- Filter -->
 <div class="ex-question">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">Search Filter</h3>
-      </div>
-      <div class="panel-body">
-          <form method="post" action="">
-              <ul class="filter">
-                  <li>
-                    <label for="username">Username : </label>
-                    <input type="text" name="username" value="" />
-                  </li>
-                  <li>
-                    <label for="regid">Reg / Test ID : </label>
-                    <input type="text" name="regid" value="" />
-                  </li>
-                  <li>
-                    <input type="submit" class="btn btn-sm btn-primary" name="submitSearch" value="Search" />
-                  </li>
-              </ul>
-          </form>
+    <div id="exSearchBox" class="postbox">
+        <h3 class="hndle"><span>Search Filter</span></h3>
+      <div class="inside">
+          <div class="main">
+            <form method="post" action="">
+                <ul class="filter">
+                    <li>
+                      <label for="username">Username : </label>
+                      <input type="text" name="username" value="" />
+                    </li>
+                    <li>
+                      <label for="regid">Reg / Test ID : </label>
+                      <input type="text" name="regid" value="" />
+                    </li>
+                    <li>
+                      <input type="submit" class="button button-primary" name="submitSearch" value="Search" />
+                    </li>
+                </ul>
+            </form>
+        </div>
       </div>
     </div>
 </div>

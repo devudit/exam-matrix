@@ -24,7 +24,7 @@ if(isset($_REQUEST['submitFilter'])){
 }
 ?>
 <div class="qWrap">
-<br/><p><h1> Manage Questions </h1></p><hr/><br/><br/>
+<br/><h2> Manage Questions </h2><hr/><br/>
 <?php if($alert['msg'] != ''){ ?>
 <div class="alert <?php echo $alert['alert']; ?>">
     <p><strong><?php echo $alert['msg']; ?></strong></p>
@@ -39,36 +39,36 @@ if(isset($_REQUEST['submitFilter'])){
 <!-- End Hidden Form -->
 <!-- Filter -->
 <div class="ex-question">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">Question Filter</h3>
-      </div>
-      <div class="panel-body">
-          <form method="post" action="">
-              <ul class="filter">
-                  <li>
-                    <label for="superSet">Parent Set : </label>
-                    <select id="superSet" name="set">
-                          <option value="NOSELECT">Select Set</option>
-                        <?php foreach($sets as $key => $value){ ?>
-                          <option <?php if($selectedSetId==$value->id){ echo 'selected="selected"'; } ?> value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
-                         <?php } ?>
-                    </select>
-                  </li>
-                  <li>
-                    <label for="set">Subset Name : </label>
-                    <select id="subSet" name="subset">
-                        <option value="NOSELECT">Select Subset</option>
-                        <?php foreach($subset as $key => $value){ ?>
-                          <option value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
-                         <?php } ?>
-                    </select>
-                  </li>
-                  <li>
-                    <input type="submit" class="btn btn-sm btn-primary" name="submitFilter" value="Filter Questions" />
-                  </li>
-              </ul>
-          </form>
+    <div id="exManageBox" class="postbox">
+        <h3 class="hndle"><span>Question Filter</span></h3>
+      <div class="inside">
+          <div class="main">
+            <form method="post" action="">
+                <ul class="filter">
+                    <li>
+                      <label for="superSet">Parent Set : </label>
+                      <select id="superSet" name="set">
+                            <option value="NOSELECT">Select Set</option>
+                          <?php foreach($sets as $key => $value){ ?>
+                            <option <?php if($selectedSetId==$value->id){ echo 'selected="selected"'; } ?> value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
+                           <?php } ?>
+                      </select>
+                    </li>
+                    <li>
+                      <label for="set">Subset Name : </label>
+                      <select id="subSet" name="subset">
+                          <option value="NOSELECT">Select Subset</option>
+                          <?php foreach($subset as $key => $value){ ?>
+                            <option value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
+                           <?php } ?>
+                      </select>
+                    </li>
+                    <li>
+                      <input type="submit" class="button button-primary" name="submitFilter" value="Filter Questions" />
+                    </li>
+                </ul>
+            </form>
+        </div>
       </div>
     </div>
 </div>

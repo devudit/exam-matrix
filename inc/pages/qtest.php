@@ -26,49 +26,49 @@ if(isset($_REQUEST['subsetIdForDelete'])){
 $sets = $db->getAllSet();
 ?>
 <div class="qWrap">
-<br/><p><h1> Set, Subset & Question </h1></p><hr/><br/><br/>
+<br/><h2> Set, Subset & Question </h2><hr/><br/>
 <?php if($alert['msg'] != ''){ ?>
 <div class="alert <?php echo $alert['alert']; ?>">
     <p><strong><?php echo $alert['msg']; ?></strong></p>
 </div>
 <?php } ?>
 <div class="ex-set">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">Add Question Set</h3>
-      </div>
-      <div class="panel-body">
-          <form method="post" action="">
-              <p>
-                <label for="exSet">Set Name : </label>
-                <input type="text" id="exSet" name="exSet" />
-                <input type="submit" class="btn btn-sm btn-primary" name="setSubmit" value="Add" />
-            </p>
-          </form>
+    <div id="exSetBox" class="postbox ">
+        <h3 class="hndle"><span>Add Question Set</span></h3>
+      <div class="inside">
+          <div class="main">
+            <form method="post" action="">
+                <p>
+                  <label for="exSet">Set Name : </label>
+                  <input type="text" id="exSet" name="exSet" />
+                  <input type="submit" class="button button-primary" name="setSubmit" value="Add" />
+              </p>
+            </form>
+        </div>
       </div>
     </div>
 </div>
 <div class="ex-subset">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">Add Subset</h3>
-      </div>
-      <div class="panel-body">
-          <form method="post" action="" >
-              <p>
-                  <label for="parentSet">Select Parent Set : </label>
-                  <select name="parentSet" id="parentSet">
-                      <?php foreach($sets as $key => $value){ ?>
-                      <option value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
-                      <?php } ?>                      
-                  </select>
+    <div id="exSubsetBox" class="postbox">
+        <h3 class="hndle"><span>Add Subset</span></h3>
+      <div class="inside">
+          <div class="main">
+            <form method="post" action="" >
+                <p>
+                    <label for="parentSet">Select Parent Set : </label>
+                    <select name="parentSet" id="parentSet">
+                        <?php foreach($sets as $key => $value){ ?>
+                        <option value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
+                        <?php } ?>                      
+                    </select>
+                </p>
+                <p>
+                  <label for="exSubset">Subset Name : </label>
+                  <input type="text" id="exSubset" name="exSubset" />
+                  <input type="submit" class="button button-primary" name="subsetSubmit" value="Add" />
               </p>
-              <p>
-                <label for="exSubset">Subset Name : </label>
-                <input type="text" id="exSubset" name="exSubset" />
-                <input type="submit" class="btn btn-sm btn-primary" name="subsetSubmit" value="Add" />
-            </p>
-          </form>
+            </form>
+        </div>
       </div>
     </div>
 </div>
