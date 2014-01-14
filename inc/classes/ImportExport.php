@@ -23,6 +23,39 @@ class ImportExport {
         $alert = $this->uploadFile();
         if(trim($alert['msg'])=='Success'){
             $db = new Database();
+            $csv = new CSV();
+            $csv->auto($this->upload_path.$this->filename);
+            foreach ($csv->data as $key => $row){
+                $set_id = $db->getSetId(trim($row['Set']));
+                if($set_id > 0){
+                    $subset_id = $db->getSubsetId(trim($row['Subset']),$set_id);
+                    if($subset_id > 0){
+                        
+                    } else {
+                        $db->addSubset($set_id, trim($row['Subset']), 'Y');
+                        $subset_id = $db->getSubsetId(trim($row['Subset']),$set_id);
+                    }
+                } else {
+                    $db->addSet(trim($row['Set']), 'Y');
+                    $set_id = $db->getSetId(trim($row['Set']));
+                    $db->addSubset($set_id, trim($row['Subset']), 'Y');
+                    $subset_id = $db->getSubsetId(trim($row['Subset']),$set_id);
+                }
+                $wpdb->insert( 
+                        $table_prefix.'ex_questions', 
+                        array( 
+                                'set' => $set_id,
+                                'subset' => $subset_id,
+                                'question' => trim($row['Question']),
+                                'opt1' => trim($row['opt1']),
+                                'opt2' => trim($row['opt2']),
+                                'opt3' => trim($row['opt3']),
+                                'opt4' => trim($row['opt4']),
+                                'answer' => trim($row['Answer']),
+                                'multi' => trim($row['Multi'])
+                        )
+                );
+            }
         } else {
             return $alert;
         }
@@ -76,6 +109,6 @@ class ImportExport {
     function getExampleCSV(){
         $plugin_dir_name = explode('/',plugin_basename(__FILE__));
         $plugin_dir_name = $plugin_dir_name[0];
-        return plugins_url( $plugin_dir_name.'/lib/csv/example.csv');
+        return plugins_url( $plugin_dir_name.'/templates/csv/example.csv');
     }
 }
