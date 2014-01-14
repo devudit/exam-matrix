@@ -270,6 +270,7 @@ class examMatrix {
     }
     function _importExport(){
         $db = new Database();
+        $ie = new ImportExport();
         require_once(plugin_dir_path( __FILE__ ).'inc/pages/import-export.php');
     }
     // register User Widget widget

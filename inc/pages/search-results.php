@@ -30,7 +30,9 @@ if(isset($_REQUEST['viewResult'])){
 <div class="qWrap">
 <br/><p><h1> Search Result </h1></p><hr/><br/><br/>
 <?php if($alert['msg'] != ''){ ?>
-<div class="alert <?php echo $alert['alert']; ?>"><?php echo $alert['msg']; ?></div>
+<div class="alert <?php echo $alert['alert']; ?>">
+    <p><strong><?php echo $alert['msg']; ?></strong></p>
+</div>
 <?php } ?>
 <!-- Filter -->
 <div class="ex-question">

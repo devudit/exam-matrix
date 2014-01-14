@@ -46,6 +46,13 @@ class Database {
        return $wpdb->get_var("SELECT name FROM $this->tblSet WHERE id=$id");
        
    }
+   public function getSetId($name){
+       global $wpdb;
+       if(trim($name) == '')
+           return 'Wrong Name';
+       return $wpdb->get_var("SELECT id FROM $this->tblSet WHERE name='".trim($name)."'");
+       
+   }
    public function addSet($name,$status){
        global $wpdb;
        if($name == '')
@@ -124,6 +131,13 @@ class Database {
        if($id == '')
            return 'Wrong ID';
        return $wpdb->get_var("SELECT name FROM $this->tblSubset WHERE id=$id");
+       
+   }
+   public function getSubsetId($name){
+       global $wpdb;
+       if(trim($name) == '')
+           return 'Wrong Name';
+       return $wpdb->get_var("SELECT id FROM $this->tblSubset WHERE name='".trim($name)."'");
        
    }
    public function deleteSubset($id){

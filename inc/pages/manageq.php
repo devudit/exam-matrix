@@ -26,7 +26,9 @@ if(isset($_REQUEST['submitFilter'])){
 <div class="qWrap">
 <br/><p><h1> Manage Questions </h1></p><hr/><br/><br/>
 <?php if($alert['msg'] != ''){ ?>
-<div class="alert <?php echo $alert['alert']; ?>"><?php echo $alert['msg']; ?></div>
+<div class="alert <?php echo $alert['alert']; ?>">
+    <p><strong><?php echo $alert['msg']; ?></strong></p>
+</div>
 <?php } ?>
 <!-- Hidden Form -->
 <div style="display:none !important;">
