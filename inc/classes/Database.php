@@ -295,6 +295,24 @@ class Database {
                     'quest' => $return
             );
    }
+   public function getAllQuestions(){
+       global $wpdb;
+       $questions = $wpdb->get_results("SELECT * FROM $this->tblQuestions",'ARRAY_A');
+       foreach($questions as $key=>$value){
+           unset($questions[$key]['id']);
+           $questions[$key]['set'] = $this->getSetName($value['set']);
+           $questions[$key]['subset'] = $this->getSubsetName($value['subset']);
+       }
+       return $questions;
+   }
+   public function getAllResult(){
+       global $wpdb;
+       $results = $wpdb->get_results("SELECT * FROM $this->tblResults",'ARRAY_A');
+       foreach($results as $key=>$value){
+           unset($results[$key]['id']);
+       }
+       return $results;
+   }
 }
 
 ?>

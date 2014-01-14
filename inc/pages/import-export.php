@@ -7,7 +7,11 @@ if(isset($_POST['exImportCsv'])){
 }
 if(isset($_POST['exExportCsv'])){
     if($_POST['exCsvToExport'] != 'NONE'){
-        
+        if($_POST['exCsvToExport'] == 'QUES'){
+            $alert = $ie->exportQuestions();
+        } elseif ($_POST['exCsvToExport'] == 'RESULT') {
+            $alert = $ie->exportResults();
+        }
     }
 }
 ?>
