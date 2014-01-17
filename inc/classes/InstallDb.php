@@ -14,10 +14,9 @@ namespace ExamMatrix;
  * @author Udit Rawat
  */
 class InstallDb {
-   private $db_ver = 1.5;
-   private $prev_db_ver = 1.0;
    public function __construct(){
-           $this->_installTables();
+       add_option( "exammatrix_db_version", "1.5" );
+       $this->_installTables();
    }
    private function _installTables(){
        global $wpdb, $table_prefix;
@@ -70,15 +69,11 @@ class InstallDb {
                             `gain` int(30) NOT NULL,
                             `wrong` int(30) NOT NULL,
                             PRIMARY KEY (`ID`)
-                          ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;',
-               'alterq' => 'ALTER TABLE `'.$table_prefix.'ex_questions`
-                            ADD `multi` varchar(255) NOT NULL DEFAULT "N" 
-                            AFTER `answer`'
+                          ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;'
            );
        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
        foreach($sql as $key=>$query){
            dbDelta( $query );
        }
-       update_option( "exammatrix_db_version", $this->db_ver );
    }
 }
