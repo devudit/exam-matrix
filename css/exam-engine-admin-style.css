@@ -37,9 +37,6 @@ label.control-label{
     float:left;
     width: 1060px;
 }
-.ex-add-quest{
-    width:660px;
-}
 #question{
     height: 190px;
 }
@@ -166,4 +163,18 @@ li.list-group-item:active, li.list-group-item:hover {
     -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
     -o-box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
     -khtml-box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+}
+/* donation */
+.donation-wrap{
+    background-color: #ecf7eb; 
+    border-left: 4px solid #7ad03a;
+    border-right: 4px solid #7ad03a;
+}
+.donation-wrap h3.hndle{
+    cursor: pointer;
+    font-weight: normal;
+    padding: 5px;
+}
+.donation-wrap h3.hndle span{
+    padding-left: 10px;
 }
