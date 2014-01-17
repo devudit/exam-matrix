@@ -26,7 +26,10 @@ label.control-label{
     margin-right: 20px;
 }
 .ex-set #exSetBox{
-    height:160px;
+    min-height:160px;
+}
+.ex-subset #exSubsetBox{
+    min-height:160px;
 }
 .ex-subset{
     width: 520px;
