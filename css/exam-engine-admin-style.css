@@ -166,9 +166,9 @@ li.list-group-item:active, li.list-group-item:hover {
 }
 /* donation */
 .donation-wrap{
-    background-color: #ecf7eb; 
-    border-left: 4px solid #7ad03a;
-    border-right: 4px solid #7ad03a;
+    background-color: #f7fcfe; 
+    border-left: 4px solid #2ea2cc;
+    border-right: 4px solid #2ea2cc;
 }
 .donation-wrap h3.hndle{
     cursor: pointer;
