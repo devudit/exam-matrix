@@ -22,6 +22,7 @@ class InstallDb {
            $this->_upgradeTabels();
        }
        update_option( "exammatrix_db_version", $this->curr_ver );
+       update_option("exammatrix_donation_camp",'N');
    }
    private function _installTables(){
        global $wpdb, $table_prefix;

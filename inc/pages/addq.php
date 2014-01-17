@@ -101,5 +101,7 @@ if(isset($_REQUEST['addQuestion'])){
     </div>
 </div>
 <!-- End Content -->
-
+<!-- donation add -->
+<?php require_once(plugin_dir_path( __FILE__ ).'donation.php'); ?>
+<!-- end donation add -->
 </div>

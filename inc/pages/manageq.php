@@ -97,4 +97,7 @@ if(isset($_REQUEST['submitFilter'])){
     </div>
 </div>
 <?php } ?>
+<!-- donation add -->
+<?php require_once(plugin_dir_path( __FILE__ ).'donation.php'); ?>
+<!-- end donation add -->
 </div>
