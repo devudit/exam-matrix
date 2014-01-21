@@ -25,7 +25,7 @@
         echo '<p style="text-align:center">Wrong '.$result['wrong'].'</p>';
     }
 ?>
-<! -- Work Room Template -->
+<!-- Work Room Template -->
 <?php } else  {
 $testID = trim($_REQUEST['testId']); 
 $is_test_started = FALSE;
